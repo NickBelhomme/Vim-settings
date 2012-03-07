@@ -1,0 +1,80 @@
+" Vim5 and later versions support syntax highlighting. Uncommenting the next
+" line enables syntax highlighting by default.
+syntax on
+
+
+" Uncomment the following to have Vim jump to the last position when
+" reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+autocmd BufWritePre * :%s/\s\+$//e
+
+call pathogen#infect()
+let mapleader=","
+
+imap jj <Esc>:w<CR>
+
+nmap <silent> <leader>b :bp<CR>
+nmap <silent> <leader>ev :e /etc/vim/vimrc.local<CR>
+nmap <silent> <leader>l :!php -l %<CR>
+nmap <silent> <leader>m :! phpcs --standard=/export/project/skynet/scripts/ci/phpcs/BgcZend -v % <CR>
+nmap <silent> <leader>n :bn<CR>
+nmap <silent> <leader>/ :nohlsearch<CR>
+nmap <silent> <leader>sv :so /etc/vim/vimrc.local<CR>
+nmap <silent> <leader>t :!tail -n20 /var/log/apache2/error.log<CR>
+nmap <silent> <leader>u :! phpunit --bootstrap /export/project/skynet/zend/library/common/tests/phpunit/bootstrap.php --colors %<CR>
+nmap <silent> <leader>w  <Plug>Kwbd
+
+map <F5> :Project<CR>
+map <F6> :NERDTreeToggle<CR>
+map <F7> :TlistToggle<CR>
+map <F11> :EnablePHPFold<CR>
+map <F12> :DisablePHPFold<CR>
+" Easy window navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+
+set autoindent                                  " always set autoindenting on
+set autowrite                                   " Automatically save before commands like :next and :make
+set background=dark                             " a dark background
+set backspace=indent,eol,start                  " allow backspacing over everything in insert mode
+set copyindent                                  " copy the previous indentation on autoindenting
+set expandtab                                   " insert space characters whenever the tab key is pressed
+set hidden                                      " Hide buffers when they are abandoned
+set history=1000                                " remember more commands and search history
+set hlsearch                                    " highlight search terms
+set ignorecase                                  " Do case insensitive matching
+set ignorecase                                  " ignore case when searching
+set incsearch                                   " Incremental search
+set incsearch                                   " show search matches as you type
+set keywordprg=/usr/bin/pman                    " tells vim which manual parser to use
+set laststatus=2                                " always show the status line (0 = never, 1 = (default) only if there are two or more windows, 2 = always)
+set list                                        " print all characters including whitespace
+set listchars=tab:>.,trail:.,extends:#,nbsp:.   " for everything that is NOT this list
+set nobackup                                    " a backup file is containing the file as it was before you edited it.
+set noerrorbells                                " don't beep
+set noswapfile                                  " no swap files
+set nowrap                                      " don't wrap lines
+set number                                      " always show line numbers
+set pastetoggle=<F2>                            " go into paste mode
+set shiftround                                  " use multiple of shiftwidth when indenting with '<' and '>'
+set shiftwidth=4                                " number of spaces to use for autoindenting
+set showcmd                                     " Show (partial) command in status line.
+set showmatch                                   " set show matching parenthesis
+set showmatch                                   " Show matching brackets.
+set smartcase                                   " Do smart case matching
+set smartcase                                   " ignore case if search pattern is all lowercase, case-sensitive otherwise
+set smarttab                                    " insert tabs on the start of a line according to shiftwidth, not tabstop
+set statusline=%c\ %F%m%r%h%w                       " display the file name in the status line
+set tabstop=4                                   " a tab is four spaces
+set title                                       " change the terminal's title
+set undolevels=1000                             " use many muchos levels of undo
+set wildignore=*.swp,*.bak,*.pyc,*.class        " ignore matching files when using tab complete on filenames
+
+filetype plugin indent on
+filetype plugin on
