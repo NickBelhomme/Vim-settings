@@ -26,6 +26,9 @@ nmap <silent> <leader>sv :so /etc/vim/vimrc.local<CR>
 nmap <silent> <leader>t :!tail -n20 /var/log/apache2/error.log<CR>
 nmap <silent> <leader>u :! phpunit --bootstrap /export/project/skynet/zend/library/common/tests/phpunit/bootstrap.php --colors %<CR>
 nmap <silent> <leader>w  <Plug>Kwbd
+nmap <silent> <leader>sc  :!svn commit %<CR>
+nmap <silent> <leader>su  :!svn update %<CR>
+nmap <silent> <leader>sr  :!svn revert %<CR>
 
 map <F5> :Project<CR>
 map <F6> :NERDTreeToggle<CR>
@@ -38,7 +41,7 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-
+match Todo '\%121v.*'
 set autoindent                                  " always set autoindenting on
 set autowrite                                   " Automatically save before commands like :next and :make
 set background=dark                             " a dark background
@@ -70,7 +73,7 @@ set showmatch                                   " Show matching brackets.
 set smartcase                                   " Do smart case matching
 set smartcase                                   " ignore case if search pattern is all lowercase, case-sensitive otherwise
 set smarttab                                    " insert tabs on the start of a line according to shiftwidth, not tabstop
-set statusline=%c\ %F%m%r%h%w                       " display the file name in the status line
+set statusline=%c\ %F%m%r%h%w                   " display the file name in the status line
 set tabstop=4                                   " a tab is four spaces
 set title                                       " change the terminal's title
 set undolevels=1000                             " use many muchos levels of undo
